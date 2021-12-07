@@ -1,0 +1,11 @@
+{
+  "editor.tabSize": 2,
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true,
+  "prettier.useEditorConfig": false,
+  "prettier.withNodeModules": true,
+  "editor.formatOnSave": true,
+  "javascript.preferences.quoteStyle": "single",
+  "html.completion.attributeDefaultValue": "singlequotes",
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

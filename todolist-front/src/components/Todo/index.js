@@ -1,76 +1,87 @@
-import React, { useState } from "react";
-import "./style.css";
+import React, { useState } from 'react';
+import './style.css';
 
 function Todo({ todo, remove, update, toggleComplete }) {
   const [isEditing, setIsEditing] = useState(false);
   const [task, setTask] = useState(todo);
 
-  const handleClick = evt => {
+  const handleClick = (evt) => {
     remove(evt.target.id);
   };
   const toggleFrom = () => {
     setIsEditing(!isEditing);
   };
-  const handleUpdate = evt => {
+  const handleUpdate = (evt) => {
     evt.preventDefault();
-    console.log('asdf',task);
+    console.log('asdf', task);
     update(todo.id, task);
     toggleFrom();
   };
-  const handleChange = evt => {
-    setTask({...task, [evt.target.name]: evt.target.value});
+  const handleChange = (evt) => {
+    setTask({ ...task, [evt.target.name]: evt.target.value });
   };
-  const toggleCompleted = evt => {
+  const toggleCompleted = (evt) => {
     toggleComplete(parseInt(evt.target.id));
   };
 
   let result;
   if (isEditing) {
     result = (
-      <div className="Todo">
-        <form className="Todo-edit-form" onSubmit={handleUpdate}>
-          <input onChange={handleChange} value={task.title} type="text" name="title" />
-          <textarea 
-            id="description"
-            name="description"
-            placeholder="1 kg de arroz"
+      <div className='Todo'>
+        <form className='Todo-edit-form' onSubmit={handleUpdate}>
+          <input
+            onChange={handleChange}
+            value={task.title}
+            type='text'
+            name='title'
+          />
+          <textarea
+            id='description'
+            name='description'
+            placeholder='1 kg de arroz'
             value={task.description}
-            rows="4"
+            rows='4'
             onChange={handleChange}
           ></textarea>
-          <input 
-            id="due_date"
-            type="date"
-            name="due_date"
+          <input
+            id='due_date'
+            type='date'
+            name='due_date'
             value={task.due_date}
             onChange={handleChange}
-            />
-          <div className="btn-container">
-            <button type="submit">Actualizar</button>
-            <button type="button" onClick={toggleFrom} className="btn-cancel">Cancelar</button>
+          />
+          <div className='btn-container'>
+            <button type='submit'>Actualizar</button>
+            <button type='button' onClick={toggleFrom} className='btn-cancel'>
+              Cancelar
+            </button>
           </div>
         </form>
       </div>
     );
   } else {
     result = (
-      <div className="Todo">
+      <div className='Todo'>
         <li
           id={todo.id}
           onClick={toggleCompleted}
-          className={todo.completed ? "Todo-task completed" : "Todo-task"}
+          className={todo.completed ? 'Todo-task completed' : 'Todo-task'}
         >
           {todo.title}
         </li>
-        <div className="Todo-buttons">
+        <div className='Todo-buttons'>
           <button onClick={toggleFrom}>
-            <i className="fas fa-pen" />
+            <i className='fas fa-pen'>edi</i>
           </button>
           <button onClick={handleClick}>
-            <i id={todo.id} className="fas fa-trash" />
+            <i id={todo.id} className='fas fa-trash'>
+              del
+            </i>
           </button>
           <button onClick={toggleCompleted}>
-            <i id={todo.id} className="fas fa-check" />
+            <i id={todo.id} className='fas fa-check'>
+              done
+            </i>
           </button>
         </div>
       </div>
